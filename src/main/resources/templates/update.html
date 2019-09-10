@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="update" method="post">
+    <p><input type="text" name="id" th:value="${map.person.id}"></p>
+    <p><input type="text" name="name" th:value="${map.person.name}"></p>
+    <p><input type="text" name="birthday" th:value="${#dates.format(map.person.birthday,'yyyy-MM-dd')}"></p>
+    <p><input type="text" name="gender" th:value="${map.person.gender}"></p>
+    <p><input type="text" name="rank" th:value="${map.person.rank}"></p>
+    <p><input type="text" name="age" th:value="${map.person.age}"></p>
+    <p><select name="did">
+        <option th:each="d : ${map.departments}" th:value="${d.id}" th:text="${d.name}" th:selected="${map.person.did==d.id}"></option>
+    </select></p>
+    <p><input type="submit"></p>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="findAll" method="post">
+    <input type="text" name="name">
+    <input type="submit">
+</form>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>部门编号</td>
+            <td>部门名称</td>
+            <td>生日</td>
+        </tr>
+        <tr th:each="p : ${person}">
+            <td th:text="${p.id}"></td>
+            <td><a th:text="${p.name}" th:href="@{/findById(id=${p.id})}"></a></td>
+            <td th:text="${p.department.id}"></td>
+            <td th:text="${p.department.name}"></td>
+            <td th:text="${#dates.format(p.birthday,'yyyy-MM-dd')}"></td>
+        </tr>
+    </table>
+</body>
+</html>
